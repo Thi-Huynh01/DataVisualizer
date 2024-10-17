@@ -1,4 +1,6 @@
-package PACKAGE_NAME;
+import javax.swing.*;
+import java.util.ArrayList;
 
-public class StatsPanel {
+public class StatsPanel extends JPanel {
+
 }

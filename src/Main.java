@@ -12,17 +12,19 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        TablePanel statsPanel = new TablePanel();
+        TablePanel tablePanel = new TablePanel();
         ChartPanel chartPanel = new ChartPanel();
+        StatsPanel statsPanel = new StatsPanel();
 
         JFrame frame = new JFrame("Data Visualizer");
-        frame.setPreferredSize(new Dimension(1280, 720));
+        frame.setPreferredSize(new Dimension(1920, 900));
         frame.setBackground(Color.pink);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
 
-        statsPanel.add(chartPanel);
-        frame.getContentPane().add(statsPanel);
+        tablePanel.add(chartPanel);
+        tablePanel.add(statsPanel);
+        frame.getContentPane().add(tablePanel);
         frame.setVisible(true);
 
 

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class TablePanel extends JPanel {
-    JTable CCtable;
+    JTable table;
     JScrollPane scrollPane;
     private final String[] col = {"White count", "Hispanic count", "Black count", "Asian count", "Male count", "Female count"};
 
@@ -16,21 +16,28 @@ public class TablePanel extends JPanel {
         Object[][]CCdataArray = getData(f.getArrayList());
 
         // Create the JTable with the dataArray and column names
-        CCtable = new JTable(CCdataArray, col);
+        table = new JTable(CCdataArray, col);
 
-        CCtable.setPreferredSize(new Dimension(250, 20));
-
-        JLabel label = new JLabel("CC ethnicity stats");
+        table.setPreferredSize(new Dimension(250, 20));
 
         // Create the JScrollPane and set its preferred size
-        scrollPane = new JScrollPane(CCtable);
-        scrollPane.setPreferredSize(new Dimension(600, 200)); // Set the size of the scroll pane
-        scrollPane.add(label);
-        add(scrollPane, BorderLayout.NORTH); // Add scrollPane to the panel
+        scrollPane = new JScrollPane(table);
+        scrollPane.setPreferredSize(new Dimension(600, 100));
+        add(scrollPane, BorderLayout.NORTH);
+
+    }
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setFont(new Font("Arial", Font.BOLD, 15));
+        g.drawString("Above shows a chart that holds the predictions" +
+                " for the City Council and the", 50,400);
+        g.drawString("School Board in all of California. This data was generated via data received", 50, 420);
+        g.drawString("from 2010-2023 given by the CEDA.", 50, 440);
 
     }
 
-    public Object[][] getData(ArrayList<Long> data) throws IOException {
+    public Object[][] getData(ArrayList<Long> data) {
 
         int n = col.length; // Number of columns
         Object[][] dataArray = new Object[1][n];

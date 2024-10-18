@@ -13,15 +13,8 @@ public class FileReader {
         ArrayList<String> dataSets = new ArrayList<>();
         sc.nextLine();
 
-        while (sc.hasNextLine()) {
-
+        while (sc.hasNextLine())
             dataSets.add(sc.nextLine());
-
-//            String line = sc.nextLine();
-//            String[] data = line.split(",");
-//            DataSet dataset = new DataSet(data[0], data[1], data[2], data[3], data[4]);
-//            dataSets.add(dataset);
-        }
 
         sc.close();
 
@@ -48,13 +41,13 @@ public class FileReader {
                         .filter(s -> s.contains("white"))
                         .count(),
                 DataEth.stream()
-                        .filter(s -> s.contains("asian"))
-                        .count(),
-                DataEth.stream()
                         .filter(s -> s.contains("hispanic"))
                         .count(),
                 DataEth.stream()
                         .filter(s -> s.contains("black"))
+                        .count(),
+                DataEth.stream()
+                        .filter(s -> s.contains("asian"))
                         .count(),
                 maleCount,
                 femaleCount

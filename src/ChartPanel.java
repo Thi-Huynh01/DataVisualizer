@@ -6,7 +6,6 @@ import java.util.Arrays;
 
 public class ChartPanel extends JPanel {
     private long[] values;
-    private final String[] labels = {"Category A", "Category B", "Category C"};
     private final Color[] colors = {Color.RED, Color.GREEN, Color.ORANGE, Color.CYAN};
     private final Color[] colorsGen = {Color.BLUE, Color.MAGENTA};
 
@@ -39,11 +38,11 @@ public class ChartPanel extends JPanel {
         g.setColor(Color.RED);
         g2d.drawString("RED: Caucasian Count",265,50);
         g.setColor(Color.GREEN);
-        g2d.drawString("GREEN: Asian Count",265,70);
+        g2d.drawString("GREEN: Hispanic Count",265,70);
         g.setColor(Color.ORANGE);
-        g2d.drawString("ORANGE: Hispanic Count",265,90);
+        g2d.drawString("ORANGE: Black Count",265,90);
         g.setColor(Color.CYAN);
-        g2d.drawString("CYAN: Black Count",265,110);
+        g2d.drawString("CYAN: Asian Count",265,110);
 
         moddedCC = Arrays.copyOfRange(values, 4, 6);
 

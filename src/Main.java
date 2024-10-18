@@ -10,14 +10,8 @@ import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        FileReader f = new FileReader();
-//
-//        ArrayList <String> data = FileReader.readFile("src\\cc_ethnic_final.csv");
-//        ArrayList <Long> r = f.getArrayListCC();
-//
-//        System.out.println(r);
-//
-        StatsPanel statsPanel = new StatsPanel();
+
+        TablePanel statsPanel = new TablePanel();
         ChartPanel chartPanel = new ChartPanel();
 
         JFrame frame = new JFrame("Data Visualizer");

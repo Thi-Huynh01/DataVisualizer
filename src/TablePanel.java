@@ -13,7 +13,7 @@ public class TablePanel extends JPanel {
         setPreferredSize(new Dimension(200, 50));
         setBackground(Color.pink);
 
-        Object[][]CCdataArray = getData(f.getArrayListCC());
+        Object[][]CCdataArray = getData(f.getArrayList());
 
         // Create the JTable with the dataArray and column names
         CCtable = new JTable(CCdataArray, col);

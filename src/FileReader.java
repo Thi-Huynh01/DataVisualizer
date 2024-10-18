@@ -54,24 +54,29 @@ public class FileReader {
         };
     }
 
-    public ArrayList<Long> getArrayListCC() throws IOException {
+    public ArrayList<Long> getArrayList() throws IOException {
 
         ArrayList<Long> dataSets = new ArrayList<>();
 
-        for (long l : this.getCCData()) {
+        for (long l : this.getAllData()) {
             dataSets.add(l);
         }
         return dataSets;
 
     }
 
-    public long[] getCCData () throws IOException {
-        return getData("src\\cc_ethnic_final.csv", "src\\cc_gender_final.csv");
+    public long[] getAllData () throws IOException {
+        long[] cc = getData("src\\cc_ethnic_final.csv", "src\\cc_gender_final.csv");
+        long[] sb = getData("src\\sb_ethnic_final.csv", "src\\sb_gender_final.csv");
 
-    }
+        long[] combined = new long[cc.length];
+        
+        for (int i = 0; i < cc.length; i++) {
+            combined[i] = cc[i] + sb[i];
+        }
 
-    public long[] getSBData () throws IOException {
-        return getData("src\\sb_ethnic_final.csv", "src\\sb_gender_final.csv");
+        return combined;
+
     }
 
 }

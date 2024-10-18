@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.util.Arrays;
@@ -11,6 +12,10 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        FileReader fr = new FileReader();
+        for (long l : fr.getAllData()) {
+            System.out.println(l);
+        }
         TablePanel statsPanel = new TablePanel();
         ChartPanel chartPanel = new ChartPanel();
 

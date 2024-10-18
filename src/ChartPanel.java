@@ -11,7 +11,7 @@ public class ChartPanel extends JPanel {
 
     public ChartPanel() throws IOException {
         FileReader fr = new FileReader();
-        values = fr.getCCData();
+        values = fr.getAllData();
         setPreferredSize(new Dimension(600, 600));
     }
 
@@ -47,7 +47,7 @@ public class ChartPanel extends JPanel {
         moddedCC = Arrays.copyOfRange(values, 4, 6);
 
         for (int i = 0; i < moddedCC.length; i++) {
-            int angle = (int) Math.round(360.0 * moddedCC[i] / total);
+            int angle = (int) Math.round(380.0 * moddedCC[i] / total);
             g2d.setColor(colorsGen[i]);
             g2d.fill(new Arc2D.Double(20, 350, 200, 200, startAngle, angle, Arc2D.PIE));
             startAngle += angle;

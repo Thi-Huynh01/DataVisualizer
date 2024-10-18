@@ -66,10 +66,9 @@ public class FileReader {
     }
 
     public long[] getAllData () throws IOException {
-        long[] cc = getData("src\\cc_ethnic_final.csv", "src\\cc_gender_final.csv");
-        long[] sb = getData("src\\sb_ethnic_final.csv", "src\\sb_gender_final.csv");
-
-        long[] combined = new long[cc.length];
+        long[] cc = getData("src\\cc_ethnic_final.csv", "src\\cc_gender_final.csv"),
+               sb = getData("src\\sb_ethnic_final.csv", "src\\sb_gender_final.csv"),
+               combined = new long[cc.length];
         
         for (int i = 0; i < cc.length; i++) {
             combined[i] = cc[i] + sb[i];

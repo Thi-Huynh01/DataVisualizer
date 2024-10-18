@@ -12,10 +12,6 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        FileReader fr = new FileReader();
-        for (long l : fr.getAllData()) {
-            System.out.println(l);
-        }
         TablePanel statsPanel = new TablePanel();
         ChartPanel chartPanel = new ChartPanel();
 

@@ -38,9 +38,7 @@ public class TablePanel extends JPanel {
         for (int j = 0; j < n; j++) {
             if (j < data.size()) {
                 dataArray[0][j] = data.get(j);
-            } else {
-                dataArray[0][j] = "";
-            }
+           }
         }
         return dataArray;
     }

@@ -32,9 +32,12 @@ public class FileReader {
                 .filter(s -> s.toLowerCase().contains("female"))
                 .count();
 
-        long maleCount = DataGen.stream()
+        /* Using a stream to count male would also count 'female', so subtracting the 'female' count from the male count
+         was the solution I came up with. */
+
+        long maleCount = (DataGen.stream()
                 .filter(s -> s.toLowerCase().contains("male"))
-                .count() - femaleCount;
+                .count()) - femaleCount;
 
         return new long[]{
                 DataEth.stream()
@@ -54,6 +57,8 @@ public class FileReader {
         };
     }
 
+    // Returns ArrayList for the sole purpose of turning it into a two-dimensional Array (Object [][])
+    // Using a two-dimensional array was the best way I could find to use to make a JTable.
     public ArrayList<Long> getArrayList() throws IOException {
 
         ArrayList<Long> dataSets = new ArrayList<>();

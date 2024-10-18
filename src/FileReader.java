@@ -7,16 +7,20 @@ import java.util.Scanner;
 
 public class FileReader {
 
-    public ArrayList<DataSet> readFile (String fileName) throws IOException {
+    public static ArrayList<String> readFile (String fileName) throws IOException {
         String contents = Files.readString(Path.of(fileName), StandardCharsets.UTF_8);
         Scanner sc = new Scanner(contents);
-        ArrayList<DataSet> dataSets = new ArrayList<>();
+        ArrayList<String> dataSets = new ArrayList<>();
         sc.nextLine();
+
         while (sc.hasNextLine()) {
-            String line = sc.nextLine();
-            String[] data = line.split(",");
-            DataSet dataset = new DataSet(data[0], data[1], data[2], data[3], data[4]);
-            dataSets.add(dataset);
+
+            dataSets.add(sc.nextLine());
+
+//            String line = sc.nextLine();
+//            String[] data = line.split(",");
+//            DataSet dataset = new DataSet(data[0], data[1], data[2], data[3], data[4]);
+//            dataSets.add(dataset);
         }
 
         sc.close();
@@ -28,29 +32,44 @@ public class FileReader {
     // {count of white people, count of asian people, count of hispanic people, count of black people, count of males, count of females}
 
     public long [] getData (String ethnicityFile, String genderFile) throws IOException {
-        ArrayList<DataSet> DataEth = readFile(ethnicityFile),
+        ArrayList<String> DataEth = readFile(ethnicityFile),
                 DataGen = readFile(genderFile);
+
+        long femaleCount = DataGen.stream()
+                .filter(s -> s.toLowerCase().contains("female"))
+                .count();
+
+        long maleCount = DataGen.stream()
+                .filter(s -> s.toLowerCase().contains("male"))
+                .count() - femaleCount;
 
         return new long[]{
                 DataEth.stream()
-                        .filter(s -> s.ethnicity_or_gender().equals("white"))
+                        .filter(s -> s.contains("white"))
                         .count(),
                 DataEth.stream()
-                        .filter(s -> s.ethnicity_or_gender().equals("asian"))
+                        .filter(s -> s.contains("asian"))
                         .count(),
                 DataEth.stream()
-                        .filter(s -> s.ethnicity_or_gender().equals("hispanic"))
+                        .filter(s -> s.contains("hispanic"))
                         .count(),
                 DataEth.stream()
-                        .filter(s -> s.ethnicity_or_gender().equals("black"))
+                        .filter(s -> s.contains("black"))
                         .count(),
-                DataGen.stream()
-                        .filter(s -> s.ethnicity_or_gender().equals("male"))
-                        .count(),
-                DataGen.stream()
-                        .filter(s -> s.ethnicity_or_gender().equals("female"))
-                        .count()
+                maleCount,
+                femaleCount
         };
+    }
+
+    public ArrayList<Long> getArrayListCC() throws IOException {
+
+        ArrayList<Long> dataSets = new ArrayList<>();
+
+        for (long l : this.getCCData()) {
+            dataSets.add(l);
+        }
+        return dataSets;
+
     }
 
     public long[] getCCData () throws IOException {
@@ -61,4 +80,5 @@ public class FileReader {
     public long[] getSBData () throws IOException {
         return getData("src\\sb_ethnic_final.csv", "src\\sb_gender_final.csv");
     }
+
 }

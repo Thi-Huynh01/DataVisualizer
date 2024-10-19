@@ -27,7 +27,7 @@ public class StatsPanel extends JPanel {
         g.setFont(new Font("Arial", Font.BOLD, 20));
 
         for (int i = 0; i < stats.length; i++) {
-            g.drawString(labels[i] + String.format("%.2f", stats[i]) + "%", 20, 20 + (i * spacing));
+            g.drawString(labels[i] + String.format("%.2f", stats[i]) + "%", 100, 150 + (i * spacing));
         }
     }
 

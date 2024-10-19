@@ -10,7 +10,7 @@ public class ChartPanel extends JPanel {
     private final Color[] colorsEth = {Color.RED, Color.GREEN, Color.ORANGE, Color.CYAN};
     private final Color[] colorsGen = {Color.BLUE, Color.MAGENTA};
     final String[] genKey = {"Male count", "Female count"};
-    final String[] ethKey = {"Caucasian count", "Hispanic count", "Black count", "Asian count"};
+    final String[] ethKey = {"White count", "Hispanic count", "Black count", "Asian count"};
 
     public ChartPanel() throws IOException {
 

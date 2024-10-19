@@ -46,7 +46,7 @@ public class ChartPanel extends JPanel {
                 spacing = 25,   // Spacing and key spacing are the amount of pixels between each item
                 key_spacing = 16;
 
-        // Set font
+        // Set font for key
         g2d.setFont(new Font("Arial", Font.BOLD, 15));
 
         for (int i = 0; i < moddedData.length; i++) {

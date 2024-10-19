@@ -24,7 +24,7 @@ public class FileReader {
     // Will return a long array in the following format:
     // {count of white people, count of asian people, count of hispanic people, count of black people, count of males, count of females}
 
-    public long [] getData (String ethnicityFile, String genderFile) throws IOException {
+    public long [] parseData (String ethnicityFile, String genderFile) throws IOException {
         ArrayList<String> DataEth = readFile(ethnicityFile),
                 DataGen = readFile(genderFile);
 
@@ -71,8 +71,8 @@ public class FileReader {
     }
 
     public long[] getAllData () throws IOException {
-        long[] cc = getData("src\\cc_ethnic_final.csv", "src\\cc_gender_final.csv"),
-               sb = getData("src\\sb_ethnic_final.csv", "src\\sb_gender_final.csv"),
+        long[] cc = parseData("src\\cc_ethnic_final.csv", "src\\cc_gender_final.csv"),
+               sb = parseData("src\\sb_ethnic_final.csv", "src\\sb_gender_final.csv"),
                combined = new long[cc.length];
         
         for (int i = 0; i < cc.length; i++) {

@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,16 +8,22 @@ import java.util.ArrayList;
 public class TablePanel extends JPanel {
     JTable table;
     JScrollPane scrollPane;
-    private final String[] col = {"First Name", "Last Name", "School District", "Year", "Ethnicity/Gender"};
+    DefaultTableModel model;
+    TableRowSorter<DefaultTableModel> sorter;
 
     public TablePanel() throws IOException {
         FileReader f = new FileReader();
         setBackground(Color.pink);
-
+        final String[] col = {"First Name", "Last Name", "City/School District", "Year", "Ethnicity/Gender"};
         Object[][] allData = getData(f.getArrayList());
 
         // Create the JTable with the dataArray and column names
+        model = new DefaultTableModel(allData, col);
         table = new JTable(allData, col);
+
+        // Create Row sorter to sort by ordinal values
+        sorter = new TableRowSorter<>(model);
+        table.setRowSorter(sorter);
 
         //Create the JScrollPane and set its preferred size
         scrollPane = new JScrollPane(table);

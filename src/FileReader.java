@@ -59,14 +59,24 @@ public class FileReader {
 
     // Returns ArrayList for the sole purpose of turning it into a two-dimensional Array (Object [][])
     // Using a two-dimensional array was the best way I could find to use to make a JTable.
-    public ArrayList<Long> getArrayList() throws IOException {
+    public ArrayList<String> getArrayList() throws IOException {
 
-        ArrayList<Long> dataSets = new ArrayList<>();
+        ArrayList<String> ccEth = readFile("src\\cc_ethnic_final.csv"),
+        ccGen = readFile("src\\cc_gender_final.csv"),
+        sbEth = readFile("src\\sb_ethnic_final.csv"),
+        sbGen = readFile("src\\sb_gender_final.csv");
 
-        for (long l : this.getAllData()) {
-            dataSets.add(l);
-        }
-        return dataSets;
+        ArrayList<String> combinedDataSets = new ArrayList<>();
+
+        // Add California City Council data
+        combinedDataSets.addAll(ccEth);
+        combinedDataSets.addAll(ccGen);
+
+        // Add California School Board data
+        combinedDataSets.addAll(sbEth);
+        combinedDataSets.addAll(sbGen);
+
+        return combinedDataSets;
 
     }
 

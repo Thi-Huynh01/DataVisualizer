@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.stream.LongStream;
 
 public class StatsPanel extends JPanel {
-    FileReader fileReader;
+    //FileReader fileReader;
     long[] data;
 
-    public StatsPanel() throws IOException {
+    public StatsPanel(FileReader fileReader) throws IOException {
         setPreferredSize(new Dimension(600, 600));
         fileReader = new FileReader();
         data = fileReader.getAllData();

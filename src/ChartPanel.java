@@ -6,17 +6,15 @@ import java.util.Arrays;
 import java.util.stream.LongStream;
 
 public class ChartPanel extends JPanel {
-    private long[] values;
+    private final long[] values;
     private final Color[] colorsEth = {Color.RED, Color.GREEN, Color.ORANGE, Color.CYAN};
     private final Color[] colorsGen = {Color.BLUE, Color.MAGENTA};
     final String[] genKey = {"Male count", "Female count"};
     final String[] ethKey = {"White count", "Hispanic count", "Black count", "Asian count"};
 
-    public ChartPanel() throws IOException {
+    public ChartPanel(FileReader fileReader) throws IOException {
 
-        // Instantiate FileReader to get the data
-        FileReader fr = new FileReader();
-        values = fr.getAllData();
+        values = fileReader.getAllData();
 
         // Set size of panel
         setPreferredSize(new Dimension(600, 600));
@@ -53,8 +51,8 @@ public class ChartPanel extends JPanel {
 
             // Draw Pie Chart
             int angle = (int) Math.round(360.0 * moddedData[i] / total);
-            g2d.setColor(colors[i]);
-            g2d.fill(new Arc2D.Double(x, y, 200, 200, startAngle, angle, Arc2D.PIE));
+            g2d.setColor(colors[i]); //Set color according to the array created earlier
+            g2d.fill(new Arc2D.Double(x, y, 200, 200, startAngle, angle, Arc2D.PIE)); //Fill with the color according to the angle value
 
             // Draw the key
             g2d.fill(new Arc2D.Double(starting_x, starting_y + (i * spacing), 20, 20, startAngle, 360, Arc2D.PIE));

@@ -2,20 +2,23 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class TablePanel extends JPanel {
+public class TablePanel extends JPanel implements ActionListener {
     JTable table;
     JScrollPane scrollPane;
     DefaultTableModel model;
     TableRowSorter<DefaultTableModel> sorter;
 
-    public TablePanel() throws IOException {
-        FileReader f = new FileReader();
+    public TablePanel(FileReader fileReader) throws IOException {
         setBackground(Color.pink);
-        final String[] col = {"First Name", "Last Name", "City/School District", "Year", "Ethnicity/Gender"};
-        Object[][] allData = getData(f.getArrayList());
+        Object[][] allData = getData(fileReader.getArrayList());
+        final String[] col = {"First Name", "Last Name",
+                "City/School District", "Year",
+                "Ethnicity/Gender"};
 
         // Create the JTable with the dataArray and column names
         model = new DefaultTableModel(allData, col);
@@ -29,6 +32,7 @@ public class TablePanel extends JPanel {
         scrollPane = new JScrollPane(table);
         scrollPane.setPreferredSize(new Dimension(600, 600));
 
+        // Add scrollPane to the Panel
         add(scrollPane);
 
     }
@@ -43,5 +47,10 @@ public class TablePanel extends JPanel {
         }
 
         return dataArray;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

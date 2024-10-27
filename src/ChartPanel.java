@@ -14,6 +14,7 @@ public class ChartPanel extends JPanel {
 
     public ChartPanel(FileReader fileReader) throws IOException {
 
+        // Get data from fileReader class
         values = fileReader.getAllData();
 
         // Set size of panel

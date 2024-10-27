@@ -8,11 +8,17 @@ import java.util.Scanner;
 public class FileReader {
 
     public static ArrayList<String> readFile (String fileName) throws IOException {
+        // Store contents of the file into String
         String contents = Files.readString(Path.of(fileName), StandardCharsets.UTF_8);
+
+        // Use scanner to read file
         Scanner sc = new Scanner(contents);
-        ArrayList<String> dataSets = new ArrayList<>();
         sc.nextLine();
 
+        // Use ArrayList collection to store CSV file elements
+        ArrayList<String> dataSets = new ArrayList<>();
+
+        // Add each line to ArrayList
         while (sc.hasNextLine())
             dataSets.add(sc.nextLine());
 

@@ -1,13 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.util.ArrayList;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Objects;
 
 // The CSV files are downloaded from this link
 // https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/MSPV1Y
+
+/* DISCLAIMER: Filters were not added to this project */
 
 public class Main {
     public static void main(String[] args) throws IOException {
